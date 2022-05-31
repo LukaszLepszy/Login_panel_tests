@@ -1,6 +1,7 @@
 import time
 from telnetlib import EC
 
+import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -30,3 +31,25 @@ class HomePage(BasePage):
         self.login_properly_credential()
         self.wait_until_visibility_css(self.reChapta_window)
 
+    def properly_loggining(self):
+        self.driver.get(self.sign_in_page)
+        self.login_properly_credential()
+        self.wait_until_visibility_css(self.header_navigation)
+
+    def get_name_header(self):
+        element = self.get_text(self.header_navigation)
+        return element
+
+    def get_notyfication_and_tooltip(self):
+        self.driver.get(self.sign_in_page)
+        self.wait_until_clicable_css(self.sign_in_button)
+        self.click_on_element_css(self.sign_in_button)
+        self.wait_until_visibility_css(self.notyfication)
+        self.wait_until_visibility_css(self.tooltip)
+
+    def get_tooltip_message(self):
+        self.get_notyfication_and_tooltip()
+        element = self.get_text(self.tooltip)
+        return element
+
+        

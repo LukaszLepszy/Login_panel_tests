@@ -115,7 +115,7 @@ class BasePage(HomePageLocators):
         current_url = self.driver.current_url
         return current_url
 
-    def get_atribute_form_css_locator(self, by_locator, atribute):
+    def get_atribute_form_css_selector(self, by_locator, atribute):
         self.wait_until_clicable_css(by_locator)
         atrribute_text = self.find_by_css_selector(by_locator).get_attribute(atribute)
         return atrribute_text

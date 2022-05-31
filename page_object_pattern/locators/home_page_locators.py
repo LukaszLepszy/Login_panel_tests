@@ -2,9 +2,6 @@ from selenium.webdriver.common.by import By
 
 class HomePageLocators:
 
-    acc = "//*[contains(text(),'Zgadzam się')]"
-    input = "input[class='gLFyf gsfi']"
-    hhome = "http://www.google.pl/"
     sign_in_page = "https://courses.ultimateqa.com/users/sign_in"
     email_input = "//*[@id='user[email]']"
     password_input = "//*[@id='user[password]']"
@@ -16,6 +13,8 @@ class HomePageLocators:
     facebook_button = "a[class='button facebook']"
     gmail_button = "a[class='button google]"
     reChapta_window = "div[class='rc-imageselect-payload']"
+    notyfication = "div[id='notifications']"
+    tooltip = "li[class='form-error__list-item']"
 
 
     sign_up_page = "https://courses.ultimateqa.com/users/sign_up"
@@ -23,6 +22,7 @@ class HomePageLocators:
     last_name_input = "input[id='user[last_name]]"
     policy_checkbox = "input[type='checkbox'][id='user[terms]']"
     sign_up_button = "input[class='button button-primary g-recaptcha']"
+    header_navigation = "a[class='dropdown__toggle-button']"
 
 
 
@@ -32,4 +32,5 @@ class HomePageLocators:
     account_certyficates_page = "https://courses.ultimateqa.com/account/certificates"
     account_billing_page = "https://courses.ultimateqa.com/account/billing"
     account_orders_page = "https://courses.ultimateqa.com/account/orders"
+
 

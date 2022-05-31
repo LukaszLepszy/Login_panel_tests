@@ -1,10 +1,11 @@
 import pytest as pytest
+
+# (ChromeDriverManager().install())
+from selenium.webdriver.support.wait import WebDriverWait
 import webdriver_manager.chrome
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
-import chromedriver_binary
 from webdriver_manager.chrome import ChromeDriverManager
-# (ChromeDriverManager().install())
 
 @pytest.fixture()
 def setup(request):

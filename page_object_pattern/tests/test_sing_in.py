@@ -9,9 +9,16 @@ from page_object_pattern.pages.home_page import HomePage
 @pytest.mark.usefixtures("setup")
 class TestGoogle:
 
-    def test_if_rechapta_appear(self):
-        self.driver.get(BasePage.sign_in_page)
+    def test_properly_loggining_url(self):
         Login = HomePage(self.driver)
-        Login.login_properly_credential()
+        Login.properly_loggining()
         assert Login.get_current_url() == Login.home_page
 
+    def test_check_header_title(self):
+        Login = HomePage(self.driver)
+        Login.properly_loggining()
+        assert Login.get_name_header() == "Test T"
+
+    def test_empty_logiining_notyfication(self):
+        Login = HomePage(self.driver)
+        assert Login.get_tooltip_message() == "Invalid email or passwordd."
