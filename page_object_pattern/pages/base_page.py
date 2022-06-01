@@ -101,12 +101,12 @@ class BasePage(HomePageLocators):
         self.driver.switch_to.window(window_after)
         self.wait_until_visibility_css(by_locator)
 
-    def get_text(self, by_locator):
+    def get_text_css(self, by_locator):
         self.wait_until_visibility_css(by_locator)
         text = self.find_by_css_selector(by_locator).text
         return text
 
-    def get_href(self, by_locator):
+    def get_href_css(self, by_locator):
         self.wait_until_visibility_css(by_locator)
         href = self.find_by_css_selector(by_locator).get_attribute("href")
         return href
@@ -125,7 +125,7 @@ class BasePage(HomePageLocators):
         atrribute_text = self.find_by_xpath_selector(by_locator).get_attribute(atribute)
         return atrribute_text
 
-    def accept_alert(self, by_locator):
+    def accept_alert_xpath(self, by_locator):
         self.find_by_xpath_selector(by_locator).click()
         time.sleep(4)
         self.driver.switch_to.alert.accept()

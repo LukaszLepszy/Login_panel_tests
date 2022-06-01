@@ -45,7 +45,7 @@ class HomePage(BasePage):
         self.wait_until_visibility_css(self.header_navigation)
 
     def get_name_header(self):
-        element = self.get_text(self.header_navigation)
+        element = self.get_text_css(self.header_navigation)
         return element
 
     def get_notyfication_and_tooltip(self):
@@ -57,7 +57,7 @@ class HomePage(BasePage):
 
     def get_tooltip_message(self):
         self.wait_until_visibility_css(self.tooltip)
-        element = self.get_text(self.tooltip)
+        element = self.get_text_css(self.tooltip)
         return element
 
     def get_style_notyfication(self):
