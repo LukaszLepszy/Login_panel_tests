@@ -4,6 +4,7 @@ import pytest
 from page_object_pattern.locators.home_page_locators import HomePageLocators
 from page_object_pattern.pages.base_page import BasePage
 from page_object_pattern.pages.home_page import HomePage
+from page_object_pattern.locators.credencials import *
 
 
 @pytest.mark.usefixtures("setup")
@@ -19,6 +20,19 @@ class TestGoogle:
         Login.properly_loggining()
         assert Login.get_name_header() == "Test T"
 
-    def test_empty_logiining_notyfication(self):
+    @pytest.mark.parametrize("email, password", [(credencials["email"], credencials["empty"]),
+                                                 (credencials["empty"], credencials["password"]),
+                                                 (credencials["empty"], credencials["empty"])])
+    def test_incorect_loggining_tooltip_message(self, email, password):
         Login = HomePage(self.driver)
-        assert Login.get_tooltip_message() == "Invalid email or passwordd."
+        Login.supply_credentials_and_sing_in(email, password)
+        assert Login.get_tooltip_message() == "Invalid email or password."
+
+    @pytest.mark.parametrize("email, password", [(credencials["email"], credencials["empty"]),
+                                                 (credencials["empty"], credencials["password"]),
+                                                 (credencials["empty"], credencials["empty"])])
+    def test_incorect_loggining_notyfication_style(self, email, password):
+        Login = HomePage(self.driver)
+        Login.supply_credentials_and_sing_in(email, password)
+        if "display: block;" not in Login.get_style_notyfication():
+            raise AssertionError("Wrong style")

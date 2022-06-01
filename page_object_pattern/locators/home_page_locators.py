@@ -15,6 +15,7 @@ class HomePageLocators:
     reChapta_window = "div[class='rc-imageselect-payload']"
     notyfication = "div[id='notifications']"
     tooltip = "li[class='form-error__list-item']"
+    """display: block;"""
 
 
     sign_up_page = "https://courses.ultimateqa.com/users/sign_up"
