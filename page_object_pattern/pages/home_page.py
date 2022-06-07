@@ -7,6 +7,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from page_object_pattern.locators.credencials import *
 from page_object_pattern.locators.home_page_locators import HomePageLocators
 from page_object_pattern.pages.base_page import BasePage
+from selenium import webdriver
+from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 
 
