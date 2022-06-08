@@ -10,18 +10,42 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 
+
 @pytest.fixture()
 def setup(request):
-    driver = webdriver.Remote(
+    ch1_capabilities = {
+        "browserName": "chrome"}
+    ch2_capabilities = {
+        "browserName": "firefox"}
+
+    ch1_driver = webdriver.Remote(
         command_executor='http://192.168.88.189:4444',
-        desired_capabilities={'browserName': "chrome"})
-    request.instance.driver = driver
-    driver.implicitly_wait(30)
-    driver.maximize_window()
-    yield
-    driver.stop_client()
-    driver.close()
-    driver.quit()
+        desired_capabilities=ch1_capabilities)
+    ch2_driver = webdriver.Remote(
+        command_executor='http://192.168.88.189:4444',
+        desired_capabilities =ch2_capabilities)
+    driver_nodes = [ch1_driver]
+    for driver_node in driver_nodes:
+        driver = driver_node
+        request.instance.driver = driver
+        driver.implicitly_wait(30)
+        driver.maximize_window()
+        yield
+        driver.stop_client()
+        driver.close()
+        driver.quit()
+
+    driver_nodes1 = [ch2_driver]
+    for driver_node in driver_nodes1:
+        driver = driver_node
+        request.instance.driver = driver
+        driver.implicitly_wait(30)
+        driver.maximize_window()
+        yield
+        driver.stop_client()
+        driver.close()
+        driver.quit()
+
 
 
 
